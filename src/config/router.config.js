@@ -6,7 +6,12 @@ const RouteView = {
   name: 'RouteView',
   render: h => h('router-view')
 }
-
+//path:      浏览器的URL
+//name:      路由的名称
+//component: 该路径下需要渲染的组件（要展示的页面）
+//meta:      路由的元信息，可以用于设置一些额外的信息，如标题、权限等
+//redirect:  组件（页面）的代码路径
+//RouteView  类似插槽
 export const asyncRouterMap = [
   {
     path: '/',
@@ -42,6 +47,12 @@ export const asyncRouterMap = [
             meta: { title: 'menu.dashboard.workplace', keepAlive: true, permission: ['dashboard'] }
           }
         ]
+      },
+      {
+        path: '/list/picture',
+        name: 'picture',
+        component: () => import('@/views/list/PictureList'),
+        meta: { title: 'menu.list.picture-list', icon: 'picture', permission: ['form'] }
       },
       // forms
       {
