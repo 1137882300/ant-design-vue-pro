@@ -43,7 +43,7 @@
 
 import axios from "axios";
 
-const dataSource = []
+// const dataSource = []
 // for (let i = 0; i < 11; i++) {
 //   dataSource.push({
 //     id: i,
@@ -60,6 +60,7 @@ const dataSource = []
 export default {
   name: 'PictureList',
   data() {
+    const dataSource = []
     this.tabList = [
       {key: 'tab1', tab: '快速开始'},
       {key: 'tab2', tab: '产品简介'},
@@ -77,7 +78,11 @@ export default {
       this.$message.info('快速开始被点击！')
     }
   },
+  //mounted(): 初始化页面完成后 会自动执行， 调方法可以调methods里的方法
   mounted() {
+    this.$nextTick(() => {
+      this.testFun();
+    });
     axios.get('https://v.api.aa1.cn/api/phone/guishu-api.php?phone=17857336866')
       .then(response => {
         console.log(response.data)
